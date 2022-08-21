@@ -23,3 +23,52 @@ document.getElementById('getpin-set').addEventListener('click', function () {
     const displaypin = document.getElementById('get-pin-box');
     displaypin.value = pin;
 })
+document.getElementById('calculator').addEventListener('click', function (event) {
+    const number = event.target.innerText;
+    const numbertypefield = document.getElementById('number-type');
+    const previesnumbertypefield = numbertypefield.value;
+    if (isNaN(number)) {
+        if (number === 'C') {
+            numbertypefield.value = '';
+        }
+        else if (number === '<') {
+            const digit = previesnumbertypefield.split('');
+            digit.pop();
+            const remainingdigit = digit.join('');
+            numbertypefield.value = remainingdigit;
+        }
+    }
+    else {
+        
+        
+        const newnumbertypefield = previesnumbertypefield + number;
+        numbertypefield.value = newnumbertypefield;
+    }
+})
+document.getElementById('varify-pin').addEventListener('click', function () {
+    // console.log('gig is opnen');
+    const displaypin = document.getElementById('get-pin-box');
+    const currentpin = displaypin.value;
+
+
+    const numbertypefield = document.getElementById('number-type');
+    const typenumbert = numbertypefield.value;
+
+    const pinsuccess = document.getElementById('pin-success');
+    const pinnotmatch = document.getElementById('pin-not-match');
+
+    
+    if (typenumbert === currentpin) {
+        // console.log('correct pin');
+        
+        pinsuccess.style.display = 'bolck';
+        pinsuccess.style.display = 'none';
+      
+    }
+    else {
+        // console.log('incorrect pin');
+        
+        pinnotmatch.style.display = 'block';
+        pinnotmatch.style.display = 'none';
+    }
+})
